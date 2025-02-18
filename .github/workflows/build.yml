@@ -34,7 +34,7 @@ jobs:
           unzip godot_export_templates/templates/android_source.zip -d android/build
 
       - name: Create .build_version file
-        run: echo "4.3.stable" > android/build/.build_version
+        run: echo "4.3.stable" > android/.build_version
 
       - name: Godot Export
         uses: firebelley/godot-export@v6.0.0
