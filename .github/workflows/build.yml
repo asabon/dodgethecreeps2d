@@ -25,6 +25,18 @@ jobs:
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3.2.2
 
+      - name: Download Android build template
+        run: |
+          mkdir -p android/build
+          wget -O godot_export_templates.tpz https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_export_templates.tpz
+          mkdir -p godot_export_templates
+          tar -xvf godot_export_templates.tpz -C godot_export_templates
+
+      - name: Copy Android build template
+        run: |
+          mkdir -p android/build
+          cp -r godot_export_templates/templates/android/* android/build/
+
       - name: Godot Export
         uses: firebelley/godot-export@v6.0.0
         with:
