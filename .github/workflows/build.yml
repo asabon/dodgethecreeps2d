@@ -39,6 +39,9 @@ jobs:
       - name: Decode keystore
         run: echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > asabon.keystore
 
+      - name: Set permissions for keystore
+        run: chmod 600 asabon.keystore
+
       - name: Godot Export
         uses: firebelley/godot-export@v6.0.0
         with:
@@ -47,6 +50,7 @@ jobs:
           relative_project_path: ./
           archive_output: true
         env:
+          ANDROID_KEYSTORE: "asabon.keystore"
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
           STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
