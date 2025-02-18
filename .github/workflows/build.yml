@@ -32,6 +32,7 @@ jobs:
           mkdir -p godot_export_templates
           unzip godot_export_templates.tpz -d godot_export_templates
           ls -al godot_export_templates
+          unzip godot_export_templates/templates/android_source.zip -d godot_export_templates/android
 
       - name: Copy Android build template
         run: |
