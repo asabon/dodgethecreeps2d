@@ -33,6 +33,12 @@ jobs:
           unzip godot_export_templates.tpz -d godot_export_templates
           unzip godot_export_templates/templates/android_source.zip -d android/build
 
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4.6.0
+        with:
+          name: android_source.zip
+          path: godot_export_templates/templates/android_source.zip
+
       - name: Godot Export
         uses: firebelley/godot-export@v6.0.0
         with:
