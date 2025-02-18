@@ -31,7 +31,7 @@ jobs:
           wget -O godot_export_templates.tpz https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_export_templates.tpz
           mkdir -p godot_export_templates
           unzip godot_export_templates.tpz -d godot_export_templates
-          ls -al godot_export_templates
+          ls -al godot_export_templates/templates
 
       - name: Cache Godot export templates
         id: cache-templates
