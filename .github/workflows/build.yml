@@ -25,23 +25,13 @@ jobs:
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3.2.2
 
-      - name: Cache Godot export templates
-        id: cache-templates
-        uses: actions/cache@v4.2.0
-        with:
-          path: godot_export_templates
-          key: ${{ runner.os }}-godot-export-templates-${{ hashFiles('godot_export_templates/templates/android/*') }}
-          restore-keys: |
-            ${{ runner.os }}-godot-export-templates-          
-
       - name: Download Android build template
-        if: steps.cache-templates.outputs.cache-hit != 'true'
         run: |
           mkdir -p android/build
           wget -O godot_export_templates.tpz https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_export_templates.tpz
           mkdir -p godot_export_templates
           unzip godot_export_templates.tpz -d godot_export_templates
-          ls -al godot_export_templates/templates
+          ls -al godot_export_templates
 
       - name: Copy Android build template
         run: |
